@@ -1,2 +1,2 @@
-pyngrok==7.0.2
+pyngrok==7.0.3
 pytest
