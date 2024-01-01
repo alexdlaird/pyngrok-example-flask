@@ -2,7 +2,7 @@ import os
 import unittest
 
 
-@unittest.skipIf("NGROK_AUTHTOKEN" not in os.environ, "NGROK_AUTHTOKEN environment variable not set")
+@unittest.skipIf(not os.environ.get("NGROK_AUTHTOKEN"), "NGROK_AUTHTOKEN environment variable not set")
 def test_healthcheck(client):
     response = client.get("/healthcheck")
     assert b'{"server": "up"}' in response.data
