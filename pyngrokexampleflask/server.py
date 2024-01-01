@@ -20,7 +20,7 @@ def create_app():
         USE_NGROK=os.environ.get("USE_NGROK", "False") == "True" and os.environ.get("WERKZEUG_RUN_MAIN") != "true"
     )
 
-    if app.config["USE_NGROK"]:
+    if app.config["USE_NGROK"] and "NGROK_AUTHTOKEN" in os.environ:
         # pyngrok will only be installed, and should only ever be initialized, in a dev environment
         from pyngrok import ngrok
 
