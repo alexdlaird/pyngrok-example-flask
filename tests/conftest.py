@@ -18,7 +18,7 @@ def app():
 
 @pytest.fixture()
 def app_no_ngrok():
-    del os.environ["USE_NGROK"]
+    os.environ["USE_NGROK"] = "False"
     app_no_ngrok = create_app()
     app_no_ngrok.config.update({
         "TESTING": True,
