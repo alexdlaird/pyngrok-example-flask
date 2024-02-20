@@ -1,4 +1,4 @@
-[![Build](https://github.com/alexdlaird/pyngrok-example-flask/actions/workflows/build.yml/badge.svg)](https://github.com/alexdlaird/pyngrok-example-flask/actions/workflows/build.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/alexdlaird/pyngrok-example-flask/build.yml)](https://github.com/alexdlaird/pyngrok-example-flask/actions/workflows/build.yml)
 ![GitHub License](https://img.shields.io/github/license/alexdlaird/pyngrok-example-flask)
 
 # pyngrok Example - Flask
