@@ -17,7 +17,7 @@ def init_webhooks(base_url):
 def create_app():
     app = Flask(__name__)
 
-    # Initialize ngrok settings into Flask
+    # Initialize your ngrok settings into Flask
     app.config.from_mapping(
         BASE_URL="http://localhost:5000",
         USE_NGROK=os.environ.get("USE_NGROK", "False") == "True" and os.environ.get("WERKZEUG_RUN_MAIN") != "true"
@@ -39,7 +39,7 @@ def create_app():
         app.config["BASE_URL"] = public_url
         init_webhooks(public_url)
 
-    # ... Initialize Blueprints and the rest of the app
+    # ... Initialize Blueprints and the rest of your app
     app.register_blueprint(route_blueprint)
 
     return app
