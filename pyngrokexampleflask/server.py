@@ -10,7 +10,7 @@ from pyngrokexampleflask.routes import route_blueprint
 
 
 def init_webhooks(base_url):
-    # Update inbound traffic via APIs to use the public-facing ngrok URL
+    # ... Implement updates necessary so inbound traffic uses the public-facing ngrok URL
     pass
 
 
@@ -24,7 +24,7 @@ def create_app():
     )
 
     if app.config["USE_NGROK"]:
-        # pyngrok will only be installed, and should only ever be initialized, in a dev environment
+        # Only import pyngrok and install if we're actually going to use it
         from pyngrok import ngrok
 
         # Get the dev server port (defaults to 5000 for Flask, can be overridden with `--port`
@@ -39,7 +39,7 @@ def create_app():
         app.config["BASE_URL"] = public_url
         init_webhooks(public_url)
 
-    # ... Initialize Blueprints and the rest of your app
+    # ... Implement Blueprints and the rest of your app
     app.register_blueprint(route_blueprint)
 
     return app
