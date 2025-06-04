@@ -32,3 +32,5 @@ jobs:
         run: make install
       - name: Test
         run: make test
+      - name: Build Docker
+        run: make build-docker

@@ -1,10 +1,13 @@
-.PHONY: all nopyc clean install test
+.PHONY: env all nopyc clean install test build-docker run-docker
 
 SHELL := /usr/bin/env bash
 PYTHON_BIN ?= python
 PROJECT_VENV ?= venv
 
 all: test
+
+env:
+	touch .env
 
 venv:
 	$(PYTHON_BIN) -m pip install virtualenv --user
@@ -28,3 +31,9 @@ test: install
 		source $(PROJECT_VENV)/bin/activate; \
 		pytest -v; \
 	)
+
+build-docker:
+	docker build -t pyngrok-example-flask .
+
+run-docker: env
+	docker run --env-file .env -p 5000:5000 -it pyngrok-example-flask
