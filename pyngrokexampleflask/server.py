@@ -19,7 +19,7 @@ def create_app():
 
     # Initialize your ngrok settings into Flask
     app.config.from_mapping(
-        BASE_URL="http://localhost:5000",
+        BASE_URL="http://localhost:8000",
         USE_NGROK=os.environ.get("USE_NGROK", "False") == "True" and os.environ.get("WERKZEUG_RUN_MAIN") != "true"
     )
 
@@ -27,9 +27,9 @@ def create_app():
         # Only import pyngrok and install if we're actually going to use it
         from pyngrok import ngrok
 
-        # Get the dev server port (defaults to 5000 for Flask, can be overridden with `--port`
+        # Get the dev server port (defaults to 8000, can be overridden with `--port`
         # when starting the server
-        port = sys.argv[sys.argv.index("--port") + 1] if "--port" in sys.argv else "5000"
+        port = sys.argv[sys.argv.index("--port") + 1] if "--port" in sys.argv else "8000"
 
         # Open a ngrok tunnel to the dev server
         public_url = ngrok.connect(port).public_url
@@ -43,3 +43,7 @@ def create_app():
     app.register_blueprint(route_blueprint)
 
     return app
+
+
+if __name__ == '__main__':
+    create_app().run(host='0.0.0.0', port=8000)

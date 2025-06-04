@@ -20,13 +20,12 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV PATH="/venv/bin:$PATH"
 ENV USE_NGROK=True
-ENV FLASK_APP=pyngrokexampleflask/server.py
 
 WORKDIR /app
 
 COPY pyngrokexampleflask pyngrokexampleflask
 COPY --from=build /venv /venv
 
-EXPOSE 5000
+EXPOSE 8000
 
-CMD ["/venv/bin/flask", "run"]
+CMD ["python", "-m", "pyngrokexampleflask.server"]
