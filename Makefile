@@ -36,4 +36,4 @@ build-docker:
 	docker build -t pyngrok-example-flask .
 
 run-docker: env
-	docker run --env-file .env -p 8000:8000 -it pyngrok-example-flask
+	docker run --env-file .env -p 8000:8000 --read-only -it pyngrok-example-flask

@@ -9,7 +9,9 @@ WORKDIR /app
 COPY requirements.txt .
 
 RUN python3 -m pip install --no-cache-dir virtualenv
-RUN python -m virtualenv /venv
+# Since /venv/bin is the first thing on the PATH, once we installed the /venv, all subsequent
+# usage of python will use the venv
+RUN python3 -m virtualenv /venv
 RUN python -m pip install --no-cache-dir -r requirements.txt pyngrok
 
 ######################################################################
