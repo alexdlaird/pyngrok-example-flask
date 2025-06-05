@@ -4,4 +4,5 @@
 # pyngrok Example - Flask
 
 This is an example project that shows how to easily integrate [`pyngrok`](https://github.com/alexdlaird/pyngrok)
-with [Flask](https://flask.palletsprojects.com/en/3.0.x/), as [summarized in the docs](https://pyngrok.readthedocs.io/en/latest/integrations.html#flask).
+with [Flask](https://flask.palletsprojects.com/en/3.0.x/), as [summarized in the docs](https://pyngrok.readthedocs.io/en/latest/integrations.html#flask). It also includes a `Dockerfile` to show how to
+[containerize `pyngrok`](https://pyngrok.readthedocs.io/en/latest/integrations.html#docker).
