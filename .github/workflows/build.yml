@@ -34,3 +34,7 @@ jobs:
         run: make test
       - name: Build Docker
         run: make build-docker
+      - name: Start container
+        run: make run-docker
+      - name: Stop container
+        run: make stop-docker
