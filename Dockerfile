@@ -1,4 +1,6 @@
-FROM alexdlaird/pyngrok AS build
+ARG TAG=latest
+
+FROM alexdlaird/pyngrok:$TAG AS build
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
@@ -16,7 +18,7 @@ RUN python -m pip install --no-cache-dir -r requirements.txt pyngrok
 
 ######################################################################
 
-FROM alexdlaird/pyngrok AS pyngrok_example_flask
+FROM alexdlaird/pyngrok:$TAG AS pyngrok_example_flask
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1

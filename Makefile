@@ -3,6 +3,7 @@
 SHELL := /usr/bin/env bash
 PYTHON_BIN ?= python
 PROJECT_VENV ?= venv
+TAG ?= latest
 
 all: test
 
@@ -33,7 +34,7 @@ test: install
 	)
 
 build-docker:
-	docker build -t pyngrok-example-flask .
+	docker build -t pyngrok-example-flask --build-arg "TAG=${TAG}" .
 
 run-docker: env
 	# Here we're mounting the container as read-only to fully validate pyngrok is not modifying
