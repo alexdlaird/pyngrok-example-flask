@@ -1,4 +1,4 @@
-.PHONY: env all nopyc clean install test build-docker run-docker
+.PHONY: env all nopyc clean install test build-docker run-docker test-docker
 
 SHELL := /usr/bin/env bash
 PYTHON_BIN ?= python
@@ -43,3 +43,11 @@ run-docker: env
 
 stop-docker:
 	docker stop pyngrok-example-flask
+
+test-docker: build-docker run-docker
+	@( \
+		sleep 10; \
+		curl -s http://localhost:8000; \
+		docker logs pyngrok-example-flask; \
+	)
+	make stop-docker
