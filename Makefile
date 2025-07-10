@@ -47,7 +47,8 @@ stop-docker:
 test-docker: build-docker run-docker
 	@( \
 		sleep 10; \
-		curl -s http://localhost:8000; \
+		curl -s http://localhost:8000/healthcheck; \
+		echo $?; \
 		docker logs pyngrok-example-flask; \
 	)
 	make stop-docker
