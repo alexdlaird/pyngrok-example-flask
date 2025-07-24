@@ -10,7 +10,7 @@ from pyngrokexampleflask.routes import route_blueprint
 
 
 def init_webhooks(base_url):
-    # ... Implement updates necessary so inbound traffic uses the public-facing ngrok URL
+    # ... Implement updates necessary so webhooks use `public_url` from ngrok
     pass
 
 
