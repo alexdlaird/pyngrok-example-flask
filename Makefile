@@ -39,7 +39,7 @@ build-docker:
 run-docker: env
 	# Here we're mounting the container as read-only to fully validate pyngrok is not modifying
 	# the filesystem during its startup, since we want to use the provisioned binary and config
-	docker run --name pyngrok-example-flask --env-file .env -p 8000:8000 -d --read-only pyngrok-example-flask
+	docker run --name pyngrok-example-flask --env-file .env -e NGROK_AUTHTOKEN -p 8000:8000 -d --read-only pyngrok-example-flask
 
 stop-docker:
 	docker stop pyngrok-example-flask
@@ -48,6 +48,8 @@ test-docker: build-docker run-docker
 	@( \
 		sleep 10; \
 		curl --fail -o /dev/null http://localhost:8000/healthcheck; \
+		status=$$?; \
 		docker logs pyngrok-example-flask; \
+		make stop-docker; \
+		exit $$status; \
 	)
-	make stop-docker
