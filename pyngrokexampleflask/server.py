@@ -42,6 +42,11 @@ def create_app():
     # ... Implement Blueprints and the rest of your app
     app.register_blueprint(route_blueprint)
 
+    @app.after_request
+    def add_muppets(response):
+        response.headers["X-Muppets"] = "42"
+        return response
+
     return app
 
 
