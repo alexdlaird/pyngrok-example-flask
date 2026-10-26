@@ -27,7 +27,7 @@ def create_app():
         # Only import pyngrok and install if we're actually going to use it
         from pyngrok import ngrok
 
-        # Get the dev server port (defaults to 8000, can be overridden with `--port`
+        # Get the dev server port (can be overridden with `--port`
         # when starting the server
         port = sys.argv[sys.argv.index("--port") + 1] if "--port" in sys.argv else "8000"
 
