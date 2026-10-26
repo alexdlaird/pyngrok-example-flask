@@ -10,11 +10,11 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN python3 -m pip install --no-cache-dir virtualenv
-# Since /venv/bin is the first thing on the PATH, once we've installed in to /venv, all subsequent
-# usage of python will use the one installed in /venv
-RUN python3 -m virtualenv /venv
-RUN python -m pip install --no-cache-dir -r requirements.txt pyngrok
+# Since /venv/bin is the first thing on the PATH, once we've installed into /venv, all subsequent
+# usage of python will use the one installed in /venv. System site packages are included so the
+# venv uses the pyngrok (and the ngrok binary it provisioned) that already come with the base image
+RUN python3 -m venv --system-site-packages /venv
+RUN python -m pip install --no-cache-dir -r requirements.txt
 
 ######################################################################
 

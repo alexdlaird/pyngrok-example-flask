@@ -11,8 +11,7 @@ env:
 	touch .env
 
 venv:
-	$(PYTHON_BIN) -m pip install virtualenv --user
-	$(PYTHON_BIN) -m virtualenv $(PROJECT_VENV)
+	$(PYTHON_BIN) -m venv $(PROJECT_VENV)
 
 install: venv
 	@( \
