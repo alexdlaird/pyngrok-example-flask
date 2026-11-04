@@ -44,7 +44,7 @@ def create_app():
 
     @app.after_request
     def add_muppets(response):
-        response.headers["X-Muppets"] = "42"
+        response.headers["X-Muppets"] = "no strings attached"
         return response
 
     return app
